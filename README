@@ -1,4 +1,18 @@
-/* 1. Configurer votre environnement de développement */
-/* 2. Un serveur Express en moins de 3 minutes */
-/* 3. Installer nodemon 'globally' */
-/* Next Vidéo - 4. Relancer le serveur Node automatiquement pendant le développement nodemon */
+# FIRST COMMIT
+
+**Chapitre 1.** Configurer votre environnement de développement  
+**Chapitre 2.** Un serveur Express en moins de 3 minutes  
+**Chapitre 3.** Installer nodemon 'globally'  
+
+# SECOND COMMIT
+
+**Chapitre 4.** Relancer le serveur Node automatiquement pendant le développement nodemon   
+**Chapitre 5.** Ajouter un paramètre à une route   
+**Chapitre 6.** Importance de l'ordre des routes   
+**Chapitre 7.** Créer un template à l'aide de EJS  
+**Chapitre 8.** Pratiquer l’utilisation des templates   
+**Chapitre 9.** Passer des données à une vue  
+
+Prochaine vidéo 
+---
+ **Chapitre 10.** Découper un template en 'partials'
