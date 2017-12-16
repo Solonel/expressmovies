@@ -29,22 +29,26 @@
 **Chapitre 22.** Parser les résultats et les intégrer dans une page web
 
 # FOURTH COMMIT
-
-Prochaine vidéo 
----
 **Chapitre 23.** Comprendre ce qu’est un token  
 **Chapitre 24.** Créer une page de login et gérer le GET et le POST  
 **Chapitre 25.** Générer un token et l’envoyer en réponse à un client  
 **Chapitre 26.** Sauvegarder notre token dans localStorage  
-**Chapitre 27.** Modifier la vue en fonction de la présence d’un token   
+**Chapitre 27.** Modifier la vue en fonction de la présence d’un token  
 **Chapitre 28.** Ajouter un lien vers la page de connexion  
 **Chapitre 29.** Détecter le moment où le DOM est prêt  
 **Chapitre 30.** Gérer l’affichage du formulaire en fonction de la présence d’un token  
 **Chapitre 31.** Décoder un token JWT  
+
+#FIFTH COMMIT  
+
+
+Prochaine vidéo 
+---
 **Chapitre 32.** Protéger l’accès à certaines routes côté serveur  
 **Chapitre 33.** Installer Postman  
 **Chapitre 34.** Ajouter un 'Authorization' header  
 **Chapitre 35.** Ajouter un ‘Authorization’ header depuis notre code   
+
 **Chapitre 36.** Créer une base de données MongoDB sur mLab  
 **Chapitre 37.** Découvrir l'ODM Mongoose  
 **Chapitre 38.** Se connecter à une base MongoDB  

@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="fr">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Express Movies</title>
+    <link rel="stylesheet" href="./public/style.css">
+</head>
+
+<body>
+    <% include ./partials/header.ejs %>
+
+        <h1>
+            <%= title %>
+        </h1>
+
+        <div id="login">
+            <form>
+                <legend>Veuillez saisir vos identifiants</legend>
+                <label for="email">email</label>
+                <input type="text" name="email" id="email">
+                <label for="password">mot de passe</label>
+                <input type="password" name="password" id="password">
+                <button type="submit">connexion</button>
+            </form>
+        </div>
+
+        <div id="logout" style="display : none">
+            <button id="disconnect">Déconnexion</button>
+            <button id="display-payload">Voir le payload</button>
+            <div id="decoded-payload">
+
+            </div>
+        </div>
+
+        <% include ./partials/footer.ejs %>
+
+            <script>
+                var form = document.querySelector('form');
+                form.addEventListener("submit", loginUser);
+
+                var login = document.getElementById('login');
+                var logout = document.getElementById('logout');
+                var disconnect = document.getElementById('disconnect');
+                var connectionLinkArea = document.getElementById('connectionLink');
+                handleFormDisplay();
+                disconnect.addEventListener('click', function () {
+                    localStorage.removeItem('userToken');
+                    loginOut()
+                });
+
+                var displayPayloadBtn = document.getElementById('display-payload');
+                displayPayloadBtn.addEventListener('click', displayPayload)
+
+                function loginUser(event) {
+                    loginUserWithXHR(event);
+                }
+
+                function loginUserWithXHR(event) {
+                    event.preventDefault();
+                    console.log('loginUserWithXHR');
+
+                    // https://developer.mozilla.org/en-US/docs/Web/API/XMLHttpRequest/send
+                    var xhr = new XMLHttpRequest();
+                    xhr.open("POST", '/login', true);
+
+                    //Send the proper header information along with the request
+                    xhr.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
+
+                    xhr.onreadystatechange = function () {//Call a function when the state changes.
+                        if (xhr.readyState == XMLHttpRequest.DONE && xhr.status == 200) {
+                            var userToken = xhr.response;
+                            localStorage.setItem('userToken', userToken);
+                            form.reset();
+                            loginIn();
+                        }
+                    }
+
+                    var email = document.getElementById('email').value;
+                    var password = document.getElementById('password').value;
+                    var payLoad = "email=" + email + "&" + "password=" + password;
+                    xhr.send(payLoad);
+                }
+
+                function loginIn() {
+                    logout.style.display = 'block';
+                    login.style.display = 'none';
+                    connectionLinkArea.innerHTML = '<a href="/login">Déconnexion</a>';
+                }
+
+                function handleFormDisplay() {
+                    if (localStorage.getItem('userToken')) {
+                        loginIn();
+                    } else {
+                        loginOut();
+                    }
+                }
+
+                function loginOut() {
+                    logout.style.display = 'none';
+                    login.style.display = 'block';
+                    connectionLinkArea.innerHTML = '<a href="/login">connexion</a>';
+                }
+
+                function displayPayload() {
+                    var payLoad = JSON.stringify(parseJwt());
+                    document.getElementById('decoded-payload').innerHTML = `<pre>${payLoad}</pre>` ;
+                }
+
+                function parseJwt() {
+                    var tokenFromStorage = localStorage.getItem('userToken');
+                    if (tokenFromStorage) {
+                        var base64Payload = tokenFromStorage.split('.')[1];
+                        return JSON.parse(window.atob(base64Payload));
+                    } else {
+                        return 'no token to parse'
+                    }
+                }
+            </script>
+</body>
+
+</html>
