@@ -8,10 +8,12 @@
 </head>
 
 <body>
-    <h1>Express Movies Details</h1>
-    <div>
-        <%= movie_id %>
-    </div>
+    <% include ./partials/header.ejs %>
+        <h1>Express Movies Details</h1>
+        <div>
+            <%= movie_id %>
+        </div>
+        <% include ./partials/footer.ejs %>
 </body>
 
 </html>

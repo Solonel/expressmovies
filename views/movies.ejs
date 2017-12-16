@@ -8,7 +8,96 @@
 </head>
 
 <body>
-    movies
+    <% include ./partials/header.ejs %>
+
+        <h1>
+            <%= title %>
+        </h1>
+
+        <div class="movies">
+            <div>
+                <span>Title</span> -
+                <span>Year</span>
+            </div>
+            <% for (movie of frenchMovies) {%>
+                <div>
+                    <span>
+                        <%= movie.title %>
+                    </span> -
+                    <span>
+                        <%= movie.year %>
+                    </span>
+                </div>
+                <%}%>
+        </div>
+
+        <div>
+            <form action="/movies" method="POST">
+
+                <label for="movieTitle">Titre du film</label>
+                <input type="text" name="movieTitle" id="movieTitle">
+                <label for="movieYear">Année du film</label>
+                <input type="text" name="movieYear" id="movieYear">
+                <button type="submit">Ajout</button>
+
+            </form>
+        </div>
+
+        <% include ./partials/footer.ejs %>
+
+            <script>
+                const form = document.querySelector('form');
+                form.addEventListener('submit', addMovie);
+
+                function addMovie(event) {
+                    event.preventDefault();
+                    if (window.fetch) {
+                        addMovieUsingFetch(event);
+                    } else {
+                        addMovieUsingXHR(event);
+                    }
+                }
+
+                function addMovieUsingFetch(event) {
+                    fetch('/movies-fetch', {
+                        method: 'POST',
+                        body: new FormData(form)
+                    })
+                        .then(checkStatus)
+                        .catch(function (err) {
+                            console.log(err);
+                        })
+                }
+
+                function addMovieUsingXHR(event) {
+                    var xhr = new XMLHttpRequest();
+                    xhr.open("POST", '/movies-xhr', true);
+                    xhr.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
+                    xhr.onreadystatechange = function () {//Call a function when the state changes.
+                        if (xhr.readyState == XMLHttpRequest.DONE) {
+                            let response = {"status" : xhr.status};
+                            checkStatus(response);
+                        }
+                    }
+                    var movietitle = document.getElementById('movieTitle').value;
+                    var movieyear = document.getElementById('movieYear').value;
+                    var payLoad = "movieTitle=" + movietitle + "&" + "movieYear=" + movieyear;
+                    xhr.send(payLoad);
+                }
+
+                function checkStatus(response) {
+                    if (response.status >= 200 && response.status < 300) {
+                        let newMovieDiv = document.createElement('div');
+                        const movieTitle = document.getElementById('movieTitle').value;
+                        const movieYear = document.getElementById('movieYear').value;
+                        newMovieDiv.innerHTML = `<span>${movieTitle}</span> - <span>${movieYear}</span>`
+                        document.querySelector('.movies').appendChild(newMovieDiv);
+                        form.reset();
+                    }
+                }
+
+
+            </script>
 </body>
 
 </html>

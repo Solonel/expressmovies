@@ -13,6 +13,51 @@
 **Chapitre 8.** Pratiquer l’utilisation des templates   
 **Chapitre 9.** Passer des données à une vue  
 
+# THIRD COMMIT
+**Chapitre 10.** Découper un template en 'partials'  
+**Chapitre 11.** Pratiquer la création de 'partials'  
+**Chapitre 12.** Gérer l'envoi de fichiers statiques  
+**Chapitre 13.** Passer des données complexes à une vue et itérer côté template  
+**Chapitre 14.** Créer un formulaire et gérer le POST  
+**Chapitre 15.** Récupérer le body d’une requête à l’aide du middleware body-parser  
+**Chapitre 16.** Gérer la persistance en mémoire  
+**Chapitre 17.** Poster un formulaire en Ajax  
+**Chapitre 18.** Poster un formulaire via le middleware ‘multer’  
+**Chapitre 19.** Poster un formulaire à l’aide du ‘bon vieux’ XHR
+**Chapitre 20.** Présentation de l’API de ‘The Movie DB’  
+**Chapitre 21.** Faire une requête à l’aide de axios
+**Chapitre 22.** Parser les résultats et les intégrer dans une page web
+
+# FOURTH COMMIT
+
 Prochaine vidéo 
 ---
- **Chapitre 10.** Découper un template en 'partials'
+**Chapitre 23.** Comprendre ce qu’est un token  
+**Chapitre 24.** Créer une page de login et gérer le GET et le POST  
+**Chapitre 25.** Générer un token et l’envoyer en réponse à un client  
+**Chapitre 26.** Sauvegarder notre token dans localStorage  
+**Chapitre 27.** Modifier la vue en fonction de la présence d’un token   
+**Chapitre 28.** Ajouter un lien vers la page de connexion  
+**Chapitre 29.** Détecter le moment où le DOM est prêt  
+**Chapitre 30.** Gérer l’affichage du formulaire en fonction de la présence d’un token  
+**Chapitre 31.** Décoder un token JWT  
+**Chapitre 32.** Protéger l’accès à certaines routes côté serveur  
+**Chapitre 33.** Installer Postman  
+**Chapitre 34.** Ajouter un 'Authorization' header  
+**Chapitre 35.** Ajouter un ‘Authorization’ header depuis notre code   
+**Chapitre 36.** Créer une base de données MongoDB sur mLab  
+**Chapitre 37.** Découvrir l'ODM Mongoose  
+**Chapitre 38.** Se connecter à une base MongoDB  
+**Chapitre 39.** Créer un schéma Mongoose  
+**Chapitre 40.** Créer un modèle Mongoose  
+**Chapitre 41.** Persister un document en base  
+**Chapitre 42.** Utiliser la librairie “faker” pour générer du contenu  
+**Chapitre 43.** Brancher un formulaire d'ajout à Mongoose  
+**Chapitre 44.** Récupérer les données depuis MongoDB  
+**Chapitre 45.** Créer un fichier de configuration  
+**Chapitre 46.** Ajouter une route permettant de gérer le PUT  
+**Chapitre 47.** Tester le PUT avec Postman  
+**Chapitre 48.** Créer une page d’édition  
+**Chapitre 49.** Gérer la persistance de nos modifications  
+**Chapitre 50.** Créer des liens dynamiques  
+**Chapitre 51.** Supprimer un document de MongoDB  
