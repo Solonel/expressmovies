@@ -4,7 +4,7 @@
 <head>
     <meta charset="UTF-8">
     <title>Express Movies</title>
-    <link rel="stylesheet" href="./public/style.css">
+    <link rel="stylesheet" href="../public/style.css">
 </head>
 
 <body>
@@ -26,6 +26,9 @@
                     </span> -
                     <span>
                         <%= movie.movieYear %>
+                    </span>
+                    <span>
+                        <a href="/movie-details/<%= movie._id %>">Edition</a>
                     </span>
                 </div>
                 <%}%>
@@ -75,7 +78,7 @@
                     xhr.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
                     xhr.onreadystatechange = function () {//Call a function when the state changes.
                         if (xhr.readyState == XMLHttpRequest.DONE) {
-                            let response = {"status" : xhr.status};
+                            let response = { "status": xhr.status };
                             checkStatus(response);
                         }
                     }

@@ -55,14 +55,13 @@
 **Chapitre 43.** Brancher un formulaire d'ajout à Mongoose  
 **Chapitre 44.** Récupérer les données depuis MongoDB  
 
-#SIXTH COMMIT
-
-Prochaine vidéo 
----
-**Chapitre 45.** Créer un fichier de configuration  
+#SIXTH COMMIT AND LAST
+**Chapitre 45.** Créer un fichier de configuration 
 **Chapitre 46.** Ajouter une route permettant de gérer le PUT  
 **Chapitre 47.** Tester le PUT avec Postman  
 **Chapitre 48.** Créer une page d’édition  
 **Chapitre 49.** Gérer la persistance de nos modifications  
 **Chapitre 50.** Créer des liens dynamiques  
 **Chapitre 51.** Supprimer un document de MongoDB  
+ 
+

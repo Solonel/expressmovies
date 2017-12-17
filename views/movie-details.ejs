@@ -4,16 +4,43 @@
 <head>
     <meta charset="UTF-8">
     <title>Express Movies Details</title>
-    <link rel="stylesheet" href="./public/style.css">
+    <link rel="stylesheet" href="../public/style.css">
 </head>
 
 <body>
     <% include ./partials/header.ejs %>
         <h1>Express Movies Details</h1>
         <div>
-            <%= movie_id %>
+            <form action="/movie-details/<%= movie._id %>" method="post">
+                <legend>Modifier le film</legend>
+                <label for="movietitle">Titre du film</label>
+                <input type="text" name="movietitle" id="movietitle" value='<%= movie.movieTitle %>'>
+                <label for="movieyear">Année du film</label>
+                <input type="date" name="movieyear" id="movieyear" value='new Date<%= movie.movieYear %>'>
+                <button type="submit">Soumettre</button>
+            </form>
+        </div>
+        <div>
+            <button id='delete'>
+                Supprimer
+            </button>
         </div>
         <% include ./partials/footer.ejs %>
+            <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+            <script>
+                var button = document.getElementById('delete');
+                button.addEventListener('click', deleteMovie)
+                function deleteMovie(event) {
+                    //event.preventDefault();
+                    var movieId = <%- JSON.stringify(movie._id) %>;
+                    axios.delete(`/movie-details/${movieId}`).then(function (response) {
+                        window.location = '/movies';
+                    }).catch(function (error) {
+                        console.error(error);
+                    })
+
+                }
+            </script>
 </body>
 
 </html>

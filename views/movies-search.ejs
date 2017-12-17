@@ -4,7 +4,7 @@
 <head>
     <meta charset="UTF-8">
     <title>Express Movies Details</title>
-    <link rel="stylesheet" href="./public/style.css">
+    <link rel="stylesheet" href="../public/style.css">
 </head>
 
 <body>
@@ -38,7 +38,7 @@
 
                 function displayResult(movies) {
                     resultsDiv.innerHTML = '';
-                    for(let movie of movies) {
+                    for (let movie of movies) {
                         let movieDiv = document.createElement('div');
                         movieDiv.innerHTML = `<span>${movie.title}</span> - <span>${movie.release_date}</span>`
                         resultsDiv.appendChild(movieDiv);

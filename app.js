@@ -8,7 +8,10 @@ const expressJwt = require('express-jwt');
 const mongoose = require('mongoose');
 const faker = require('faker');
 
-mongoose.connect('mongodb://solonel:azertyui@ds159676.mlab.com:59676/expressmovies');
+const config = require('./config');
+
+
+mongoose.connect(`mongodb://${config.db.user}:${config.db.password}@ds159676.mlab.com:59676/expressmovies`);
 const db = mongoose.connection;
 
 db.on('error', console.error.bind(console, 'Connection Error : cannot connect database'));
@@ -26,8 +29,6 @@ const title = faker.lorem.sentence(4)
 const year = faker.date.past(2017);
 const myMovie = new Movie({ movieTitle: title, movieYear: year });
 
-
-
 myMovie.save((err, savedMovie) => {
     if (err) {
         console.error(err);
@@ -43,7 +44,7 @@ let frenchMovies = [];
 
 app.use('/public', express.static('public'));
 
-app.use(expressJwt({ secret: SECRET }).unless({ path: ['/login', '/search', '/movies', '/', '/movies-fetch', '/movies-xhr'] }));
+app.use(expressJwt({ secret: SECRET }).unless({ path: ['/login', '/search', '/movies', '/', new RegExp('/movie-details.*/', 'i'), '/movies-fetch', '/movies-xhr'] }));
 
 app.set('views', './views');
 app.set('view engine', 'ejs');
@@ -103,10 +104,47 @@ app.post('/movies-xhr', urlencodedParser, (req, res) => {
 });
 
 
-app.get('/movies/:id', (req, res) => {
+app.get('/movie-details/:id', urlencodedParser, (req, res) => {
     const id = req.params.id;
-    res.render('movie-details', { movie_id: id });
+
+    Movie.findById(id, (err, movie) => {
+        if (err) {
+            res.sendStatus(404);
+        } else {
+            res.render('movie-details', { movie: movie });
+        }
+    });
 });
+
+app.delete('/movie-details/:id', (req, res) => {
+    const id = req.params.id;
+
+    Movie.findByIdAndRemove(id, (err, movie) => {
+        if (err) {
+            res.sendStatus(404);
+        } else {
+            res.sendStatus(202);
+        }
+    });
+});
+
+app.post('/movie-details/:id', urlencodedParser, (req, res) => {
+    if (!req.body) {
+        return res.sendStatus(500);
+    }
+    const id = req.params.id;
+    console.log(req.body.movieyear + ' ' + req.body.movietitle);
+
+    Movie.findByIdAndUpdate(id, { $set: { movieTitle: req.body.movietitle, movieYear: req.body.movieyear } }, { new: true }, (err, movie) => {
+        if (err) {
+            console.error(err);
+            return res.send('Err dans la mise à jour')
+        } else {
+            return res.redirect('/movies');
+        }
+    });
+});
+
 
 app.get('/search', (req, res) => {
     res.render('movies-search');
