@@ -28,14 +28,16 @@
         <div id="logout" style="display : none">
             <button id="disconnect">Déconnexion</button>
             <button id="display-payload">Voir le payload</button>
-            <div id="decoded-payload">
-
+            <div id="decoded-payload"></div>
+            <div>
+                <a href="#" id="member-only">Espace membre</a>
             </div>
         </div>
 
         <% include ./partials/footer.ejs %>
-
+            <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
             <script>
+
                 var form = document.querySelector('form');
                 form.addEventListener("submit", loginUser);
 
@@ -43,7 +45,11 @@
                 var logout = document.getElementById('logout');
                 var disconnect = document.getElementById('disconnect');
                 var connectionLinkArea = document.getElementById('connectionLink');
+                var memberOnly = document.getElementById('member-only');
                 handleFormDisplay();
+
+                memberOnly.addEventListener('click', makeRequestWithToken);
+
                 disconnect.addEventListener('click', function () {
                     localStorage.removeItem('userToken');
                     loginOut()
@@ -104,7 +110,7 @@
 
                 function displayPayload() {
                     var payLoad = JSON.stringify(parseJwt());
-                    document.getElementById('decoded-payload').innerHTML = `<pre>${payLoad}</pre>` ;
+                    document.getElementById('decoded-payload').innerHTML = `<pre>${payLoad}</pre>`;
                 }
 
                 function parseJwt() {
@@ -114,6 +120,25 @@
                         return JSON.parse(window.atob(base64Payload));
                     } else {
                         return 'no token to parse'
+                    }
+                }
+
+                function makeRequestWithToken(event) {
+                    event.preventDefault();
+                    var page = this.id;
+                    var token = localStorage.getItem('userToken');
+                    if (token) {
+                        var config = {};
+                        config.headers = { "Authorization": "Bearer " + JSON.parse(token) };
+                        axios.get(
+                            'http://localhost:3000/' + page,
+                            config
+                        ).then(res => {
+                            console.log('success');
+                            console.log(res);
+                        }).catch(err => {
+                            console.log('makeRequestWithToken err', err);
+                        })
                     }
                 }
             </script>

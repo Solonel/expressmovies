@@ -40,24 +40,25 @@
 **Chapitre 31.** Décoder un token JWT  
 
 #FIFTH COMMIT  
-
-
-Prochaine vidéo 
----
 **Chapitre 32.** Protéger l’accès à certaines routes côté serveur  
 **Chapitre 33.** Installer Postman  
 **Chapitre 34.** Ajouter un 'Authorization' header  
 **Chapitre 35.** Ajouter un ‘Authorization’ header depuis notre code   
-
 **Chapitre 36.** Créer une base de données MongoDB sur mLab  
 **Chapitre 37.** Découvrir l'ODM Mongoose  
 **Chapitre 38.** Se connecter à une base MongoDB  
 **Chapitre 39.** Créer un schéma Mongoose  
+**Chapitre 39.** Créer un schéma Mongoose  
 **Chapitre 40.** Créer un modèle Mongoose  
-**Chapitre 41.** Persister un document en base  
+**Chapitre 41.** Persister un document en base 
 **Chapitre 42.** Utiliser la librairie “faker” pour générer du contenu  
 **Chapitre 43.** Brancher un formulaire d'ajout à Mongoose  
 **Chapitre 44.** Récupérer les données depuis MongoDB  
+
+#SIXTH COMMIT
+
+Prochaine vidéo 
+---
 **Chapitre 45.** Créer un fichier de configuration  
 **Chapitre 46.** Ajouter une route permettant de gérer le PUT  
 **Chapitre 47.** Tester le PUT avec Postman  

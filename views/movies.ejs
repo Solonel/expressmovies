@@ -22,10 +22,10 @@
             <% for (movie of frenchMovies) {%>
                 <div>
                     <span>
-                        <%= movie.title %>
+                        <%= movie.movieTitle %>
                     </span> -
                     <span>
-                        <%= movie.year %>
+                        <%= movie.movieYear %>
                     </span>
                 </div>
                 <%}%>
@@ -37,7 +37,7 @@
                 <label for="movieTitle">Titre du film</label>
                 <input type="text" name="movieTitle" id="movieTitle">
                 <label for="movieYear">Année du film</label>
-                <input type="text" name="movieYear" id="movieYear">
+                <input type="date" name="movieYear" id="movieYear">
                 <button type="submit">Ajout</button>
 
             </form>
